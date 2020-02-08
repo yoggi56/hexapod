@@ -33,6 +33,6 @@
         <node name="leg_forw_kinematic" pkg="leg_forw_kinematic" type="leg_forw_kinematic"/>
         <!-- <node name="circle_traj_generator" pkg="circle_traj_generator" type="circle_traj_generator" />
 -->
-        <node name="ds4_driver" pkg="ds4_driver" type="ds4_driver_node.py"/>
+        <node name="ds4_driver" pkg="ds4_driver" type="ds4_driver_node.py" output="screen"/>
         <node name="ds4_control" pkg="ds4_control" type="ds4_control"/>
 </launch>
