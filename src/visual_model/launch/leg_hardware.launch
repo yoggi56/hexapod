@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- Load controller configuration to parameter server -->
+    <rosparam file="$(find dynamixel_control)/config/dynamixel_joint_controllers.yaml" command="load"/>
+
+    <node name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dxl_manager
+            serial_ports:
+                pan_tilt_port:
+                    port_name: "/dev/ttyACM0"
+                    baud_rate: 1000000
+                    min_motor_id: 1
+                    max_motor_id: 25
+                    update_rate: 40
+        </rosparam>
+    </node>
+    
+    <!-- start specified joint controllers -->
+    <node name="dynamixel_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port=pan_tilt_port
+                --type=simple
+                tibia_controller
+                femur_controller
+                coxa_controller"
+          output="screen"/>
+        <node name="leg_inv_kinematic" pkg="leg_inv_kinematic" type="leg_inv_kinematic"/>
+<!--         <node name="circle_traj_generator" pkg="circle_traj_generator" type="circle_traj_generator" />
+-->        <node name="dynamixel_control" pkg="dynamixel_control" type="dynamixel_control" />
+        <node name="dynamixel_read" pkg="dynamixel_control" type="dynamixel_read" />
+        <node name="leg_forw_kinematic" pkg="leg_forw_kinematic" type="leg_forw_kinematic"/>
+        <!-- <node name="circle_traj_generator" pkg="circle_traj_generator" type="circle_traj_generator" />
+-->
+        <node name="ds4_driver" pkg="ds4_driver" type="ds4_driver_node.py"/>
+        <node name="ds4_control" pkg="ds4_control" type="ds4_control"/>
+</launch>

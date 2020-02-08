@@ -1,0 +1,12 @@
+build/
+devel/
+install/
+report/
+hexapod_ws.workspace
+hexapod_ws.workspace.user
+src/CMakeLists.txt
+.catkin_workspace
+hexapod_ws.workspace.user.9dd6060
+plot_layout.xml
+plot_layout2.xml
+
