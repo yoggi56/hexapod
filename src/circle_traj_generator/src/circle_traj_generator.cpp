@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "../../../devel/include/leg_msgs/LegRefPos.h"
+#include "leg_msgs/LegRefPos.h"
 #include <cmath>
 
 int main(int argc, char **argv)

@@ -36,60 +36,99 @@
 
 using namespace std;
 
-static double res_pos[3];
+static double x_ok, y_ok, z_ok;
 
 bool calc_constr(double x, double y, double z)
 {
-  double P3Leg[3];
-  double P03[4];
-  double theta1;
-  double h1, a1, h2, a2;
-  bool ok1, ok2;
-  // transformation from body CoM to leg mount point
-  P3Leg[0] = abs(y) - BODY_WIDTH_B/2;
-  P3Leg[1] = x;
-  P3Leg[2] = z;
+//  double P3Leg[3];
+//  double P03[4];
+//  double theta1;
+//  double h1, a1, h2, a2;
+//  bool ok;
+//  // transformation from body CoM to leg mount point
+//  P3Leg[0] = abs(y) - BODY_WIDTH_B/2;
+//  P3Leg[1] = x;
+//  P3Leg[2] = z;
 
-  //calculate angle for coxa joint
-  theta1 = atan2(P3Leg[1], P3Leg[0]);
+//  //calculate angle for coxa joint
+//  theta1 = -atan2(P3Leg[1], P3Leg[0]);
 
-  // transforamtion from leg mount point to femur joint
-  P03[0] = P3Leg[0] * cos(theta1) - P3Leg[1] * sin(theta1) - L1_LENGTH;
-  P03[1] = P3Leg[0] * sin(theta1) + P3Leg[1] * cos(theta1);
-  P03[2] = P3Leg[2];
+//  // transforamtion from leg mount point to femur joint
+//  P03[0] = P3Leg[0] * cos(theta1) - P3Leg[1] * sin(theta1) - L1_LENGTH;
+//  P03[1] = P3Leg[0] * sin(theta1) + P3Leg[1] * cos(theta1);
+//  P03[2] = P3Leg[2];
 
-  h1 = sqrt(pow(P3Leg[0], 2) + pow(P3Leg[1], 2));
-  a1 = asin(P3Leg[1]/h1);
+//  h1 = sqrt(pow(P3Leg[0], 2) + pow(P3Leg[1], 2));
+//  a1 = asin(P3Leg[1]/h1);
 
-  h2 = sqrt(pow(P03[2], 2) + pow(P03[1], 2));
-  a2 = asin(P03[1]/h1);
+//  h2 = sqrt(pow(P03[0], 2) + pow(P03[2], 2));
+//  a2 = asin(P03[0]/h1);
 
-  if ((h1 >= H1_MIN && h1 <= H1_MAX) && (a1 <= A1_MAX && a1 >= -A1_MAX))
+//  if ((h1 >= H1_MIN && h1 <= H1_MAX) && (a1 <= A1_MAX && a1 >= -A1_MAX) &&
+//      ((h2 >= H2_MIN && h2 <= H2_MAX) && (a2 <= A2_MAX && a1 >= -A2_MAX)) &&
+//      y <= -BODY_WIDTH_B/2.0)
+//    ok = true;
+//  else
+//    ok = false;
+  bool ok1 = false, ok3 = false, ok2 = false;
+  // check X
+  if (x >= -0.11 && x <= 0.11)
+  {
+    x_ok = x;
     ok1 = true;
+  }
   else
+  {
     ok1 = false;
+    if (x > 0.11)
+      x_ok = 0.11;
+    else if (x < -0.11)
+      x_ok = -0.11;
+  }
 
-  if ((h2 >= H2_MIN && h2 <= H2_MAX) && (a2 <= A2_MAX && a1 >= -A2_MAX))
+  // check Y
+  if (y >= -0.297 && y <= -0.161)
+  {
+    y_ok = y;
     ok2 = true;
+  }
   else
+  {
     ok2 = false;
+    if (y > -0.161)
+      y_ok = -0.161;
+    else if (y < -0.297)
+      y_ok = -0.297;
+  }
 
-  res_pos[0] = x;
-  res_pos[1] = y;
-  res_pos[2] = z;
-  return ok1 & ok2;
+  // check Z
+  if (z >= -0.145 && z <= 0.0)
+  {
+    z_ok = z;
+    ok3 = true;
+  }
+  else
+  {
+    ok3 = false;
+    if (z > 0.0)
+      z_ok = 0.0;
+    else if (z < -0.145)
+      z_ok = -0.145;
+  }
+
+  return ok1&ok2&ok3;
 }
 
 bool check_constr(geometry_constraints::geom_constr::Request  &req,
-         geometry_constraints::geom_constr::Response &res)
+                  geometry_constraints::geom_constr::Response &res)
 {
   res.ok = calc_constr(req.x, req.y, req.z);
-  res.x = res_pos[0];
-  res.y = res_pos[1];
-  res.z = res_pos[2];
+  res.x_out = x_ok;
+  res.y_out = y_ok;
+  res.z_out = z_ok;
 
   ROS_INFO("request: x=%f, y=%f, z=%f", req.x, req.y, req.z);
-  ROS_INFO("sending back response: [%f], [%f], [%f], [%s]", res.x, res.y, res.z, res.ok?"True":"False");
+  ROS_INFO("sending back response: [%f] [%f] [%f] [%s]", x_ok, y_ok, z_ok, res.ok?"True":"False");
   return true;
 }
 

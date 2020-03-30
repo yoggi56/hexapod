@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/Float64.h"
-#include "../../../devel/include/leg_msgs/LegJointState.h"
+#include "leg_msgs/LegJointState.h"
 #include "dynamixel_controllers/SetSpeed.h"
 
 static double joints[3];
