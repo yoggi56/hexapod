@@ -9,6 +9,8 @@ project(dynamixel_control)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp rospy std_msgs
+  hexy_msgs
+  hexy_lib
 )
 
 ## System dependencies are found with CMake's conventions
@@ -149,9 +151,9 @@ include_directories(
 # )
 
 
-add_executable(dynamixel_control src/dynamixel_control.cpp)
+add_executable(dynamixel_write src/dynamixel_write.cpp)
 add_executable(dynamixel_read src/dynamixel_read.cpp)
-target_link_libraries(dynamixel_control ${catkin_LIBRARIES})
+target_link_libraries(dynamixel_write ${catkin_LIBRARIES})
 target_link_libraries(dynamixel_read ${catkin_LIBRARIES})
 
 #############

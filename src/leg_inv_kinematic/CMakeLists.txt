@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   rospy
+  hexy_lib
+  hexy_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -149,6 +151,8 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+#add_executable(hexy_lib src/hexy_lib.cpp)
+#target_link_libraries(hexy_lib ${catkin_LIBRARIES})
 
 add_executable(leg_inv_kinematic src/leg_inv_kine.cpp)
 

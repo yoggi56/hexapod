@@ -1,38 +1,103 @@
-tibia_controller:
-    controller:
-        package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
-    joint_name: tibia_joint
-    joint_speed: 2.0
-    motor:
-        id: 11
-        init: 512
-        min: 0
-        max: 1023
+L1_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: L1_coxa_joint
+  joint_speed: 2.0
+  motor:
+      id: 1
+      init: 512
+      min: 0
+      max: 1023
 
-femur_controller:
-    controller:
-        package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
-    joint_name: femur_joint
-    joint_speed: 2.0
-    motor:
-        id: 6
-        init: 512
-        min: 0
-        max: 1023
+L2_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: L2_coxa_joint
+  joint_speed: 2.0
+  motor:
+      id: 9
+      init: 512
+      min: 0
+      max: 1023
 
-coxa_controller:
-    controller:
-        package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
-    joint_name: coxa_joint
-    joint_speed: 2.0
-    motor:
-        id: 20
-        init: 512
-        min: 0
-        max: 1023
+L3_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: L3_coxa_joint
+  joint_speed: 2.0
+  motor:
+      id: 13
+      init: 512
+      min: 0
+      max: 1023
+
+R1_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: R1_coxa_joint
+  joint_speed: 2.0
+  motor:
+    id: 2
+    init: 512
+    min: 0
+    max: 1023
+
+R2_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: R2_coxa_joint
+  joint_speed: 2.0
+  motor:
+    id: 20
+    init: 512
+    min: 0
+    max: 1023
+
+R2_femur:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: R2_femur_joint
+  joint_speed: 2.0
+  motor:
+    id: 6
+    init: 512
+    min: 0
+    max: 1023
+
+R2_tibia:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: R2_tibia_joint
+  joint_speed: 2.0
+  motor:
+      id: 11
+      init: 512
+      min: 0
+      max: 1023
+
+R3_coxa:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: R3_coxa_joint
+  joint_speed: 2.0
+  motor:
+    id: 21
+    init: 512
+    min: 0
+    max: 1023

@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::geometry_constraints::geom_constr > {
   static const char* value()
   {
-    return "50660a25a5fe9871eda8310b8e9664a2";
+    return "0ed687e416f05d17d89e19dfe16dcb99";
   }
 
   static const char* value(const ::geometry_constraints::geom_constr&) { return value(); }

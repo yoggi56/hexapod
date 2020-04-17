@@ -24,26 +24,36 @@ struct geom_constrRequest_
   typedef geom_constrRequest_<ContainerAllocator> Type;
 
   geom_constrRequest_()
-    : x(0.0)
-    , y(0.0)
-    , z(0.0)  {
-    }
+    : x()
+    , y()
+    , z()  {
+      x.assign(0.0);
+
+      y.assign(0.0);
+
+      z.assign(0.0);
+  }
   geom_constrRequest_(const ContainerAllocator& _alloc)
-    : x(0.0)
-    , y(0.0)
-    , z(0.0)  {
+    : x()
+    , y()
+    , z()  {
   (void)_alloc;
-    }
+      x.assign(0.0);
+
+      y.assign(0.0);
+
+      z.assign(0.0);
+  }
 
 
 
-   typedef double _x_type;
+   typedef boost::array<double, 6>  _x_type;
   _x_type x;
 
-   typedef double _y_type;
+   typedef boost::array<double, 6>  _y_type;
   _y_type y;
 
-   typedef double _z_type;
+   typedef boost::array<double, 6>  _z_type;
   _z_type z;
 
 
@@ -124,12 +134,12 @@ struct MD5Sum< ::geometry_constraints::geom_constrRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4a842b65f413084dc2b10fb484ea7f17";
+    return "334c68cc5a82d88dbceb248107ad91df";
   }
 
   static const char* value(const ::geometry_constraints::geom_constrRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4a842b65f413084dULL;
-  static const uint64_t static_value2 = 0xc2b10fb484ea7f17ULL;
+  static const uint64_t static_value1 = 0x334c68cc5a82d88dULL;
+  static const uint64_t static_value2 = 0xbceb248107ad91dfULL;
 };
 
 template<class ContainerAllocator>
@@ -148,9 +158,9 @@ struct Definition< ::geometry_constraints::geom_constrRequest_<ContainerAllocato
 {
   static const char* value()
   {
-    return "float64 x\n\
-float64 y\n\
-float64 z\n\
+    return "float64[6] x\n\
+float64[6] y\n\
+float64[6] z\n\
 ";
   }
 
@@ -190,12 +200,24 @@ struct Printer< ::geometry_constraints::geom_constrRequest_<ContainerAllocator> 
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::geometry_constraints::geom_constrRequest_<ContainerAllocator>& v)
   {
-    s << indent << "x: ";
-    Printer<double>::stream(s, indent + "  ", v.x);
-    s << indent << "y: ";
-    Printer<double>::stream(s, indent + "  ", v.y);
-    s << indent << "z: ";
-    Printer<double>::stream(s, indent + "  ", v.z);
+    s << indent << "x[]" << std::endl;
+    for (size_t i = 0; i < v.x.size(); ++i)
+    {
+      s << indent << "  x[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.x[i]);
+    }
+    s << indent << "y[]" << std::endl;
+    for (size_t i = 0; i < v.y.size(); ++i)
+    {
+      s << indent << "  y[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.y[i]);
+    }
+    s << indent << "z[]" << std::endl;
+    for (size_t i = 0; i < v.z.size(); ++i)
+    {
+      s << indent << "  z[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.z[i]);
+    }
   }
 };
 

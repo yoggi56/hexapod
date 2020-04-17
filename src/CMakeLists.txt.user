@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2020-01-18T21:49:26. -->
+<!-- Written by QtCreator 4.9.2, 2020-04-09T10:17:30. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{9dd60607-8f59-4b63-80c4-96e47e949b00}</value>
+  <value type="QByteArray">{101662d7-53cc-42af-b842-51b054575c71}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -64,7 +64,7 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{a41de152-b486-471b-8d8b-60449a809373}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{bdaa758c-c9bd-4bb8-b4ab-95a5edb903a3}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -375,7 +375,7 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Импортированный комплект</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Импортированный комплект</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{6032dc13-36ad-42c7-9709-49efadb6f335}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{db25f3f5-5aec-46ca-8048-a7b965cee5d8}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>

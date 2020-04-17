@@ -1,8 +1,8 @@
-float64 x
-float64 y
-float64 z
+float64[6] x
+float64[6] y
+float64[6] z
 ---
-float64 x_out
-float64 y_out
-float64 z_out
-bool ok
+float64[6] x_out
+float64[6] y_out
+float64[6] z_out
+bool[6] ok

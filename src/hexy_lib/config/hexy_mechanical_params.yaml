@@ -1,0 +1,46 @@
+# mechanical parameters
+hexy/mech/L1_legth: 0.034
+hexy/mech/L2_legth: 0.095
+hexy/mech/L3_legth: 0.142
+hexy/mech/body_width_small: 0.135
+hexy/mech/body_width_big: 0.155
+hexy/mech/body_length: 0.22
+hexy/mech/body_heigth: 0.04
+
+# parameters for geometry constrainst
+# hexy/geom_constr/L1_X_MAX: 0.278
+# hexy/geom_constr/L1_X_MIN: 0.11
+# hexy/geom_constr/L1_Y_MAX: 0.27
+# hexy/geom_constr/L1_Y_MIN: 0.125
+# hexy/geom_constr/L1_Z_MAX: 0.0
+# hexy/geom_constr/L1_Z_MIN: -0.145
+# hexy/geom_constr/L2_X_MAX: 0.11
+# hexy/geom_constr/L2_X_MIN: -0.11
+# hexy/geom_constr/L2_Y_MAX: 0.297
+# hexy/geom_constr/L2_Y_MIN: 0.161
+# hexy/geom_constr/L2_Z_MAX: 0.0
+# hexy/geom_constr/L2_Z_MIN: -0.145
+# hexy/geom_constr/L3_X_MAX: -0.11
+# hexy/geom_constr/L3_X_MIN: -0.278
+# hexy/geom_constr/L3_Y_MAX: 0.27
+# hexy/geom_constr/L3_Y_MIN: 0.125
+# hexy/geom_constr/L3_Z_MAX: 0.0
+# hexy/geom_constr/L3_Z_MIN: -0.145
+# hexy/geom_constr/R1_X_MAX: 0.278
+# hexy/geom_constr/R1_X_MIN: 0.11
+# hexy/geom_constr/R1_Y_MAX: -0.125
+# hexy/geom_constr/R1_Y_MIN: -0.27
+# hexy/geom_constr/R1_Z_MAX: 0.0
+# hexy/geom_constr/R1_Z_MIN: -0.145
+# hexy/geom_constr/R2_X_MAX: 0.11
+# hexy/geom_constr/R2_X_MIN: -0.11
+# hexy/geom_constr/R2_Y_MAX: -0.161
+# hexy/geom_constr/R2_Y_MIN: -0.297
+# hexy/geom_constr/R2_Z_MAX: 0.0
+# hexy/geom_constr/R2_Z_MIN: -0.145
+# hexy/geom_constr/R3_X_MAX: -0.11
+# hexy/geom_constr/R3_X_MIN: -0.278
+# hexy/geom_constr/R3_Y_MAX: -0.125
+# hexy/geom_constr/R3_Y_MIN: -0.27
+# hexy/geom_constr/R3_Z_MAX: 0.0
+# hexy/geom_constr/R3_Z_MIN: -0.145

@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  hexy_msgs
+  hexy_lib
 )
 
 ## System dependencies are found with CMake's conventions

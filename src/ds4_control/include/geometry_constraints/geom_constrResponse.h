@@ -24,31 +24,45 @@ struct geom_constrResponse_
   typedef geom_constrResponse_<ContainerAllocator> Type;
 
   geom_constrResponse_()
-    : x_out(0.0)
-    , y_out(0.0)
-    , z_out(0.0)
-    , ok(false)  {
-    }
+    : x_out()
+    , y_out()
+    , z_out()
+    , ok()  {
+      x_out.assign(0.0);
+
+      y_out.assign(0.0);
+
+      z_out.assign(0.0);
+
+      ok.assign(false);
+  }
   geom_constrResponse_(const ContainerAllocator& _alloc)
-    : x_out(0.0)
-    , y_out(0.0)
-    , z_out(0.0)
-    , ok(false)  {
+    : x_out()
+    , y_out()
+    , z_out()
+    , ok()  {
   (void)_alloc;
-    }
+      x_out.assign(0.0);
+
+      y_out.assign(0.0);
+
+      z_out.assign(0.0);
+
+      ok.assign(false);
+  }
 
 
 
-   typedef double _x_out_type;
+   typedef boost::array<double, 6>  _x_out_type;
   _x_out_type x_out;
 
-   typedef double _y_out_type;
+   typedef boost::array<double, 6>  _y_out_type;
   _y_out_type y_out;
 
-   typedef double _z_out_type;
+   typedef boost::array<double, 6>  _z_out_type;
   _z_out_type z_out;
 
-   typedef uint8_t _ok_type;
+   typedef boost::array<uint8_t, 6>  _ok_type;
   _ok_type ok;
 
 
@@ -129,12 +143,12 @@ struct MD5Sum< ::geometry_constraints::geom_constrResponse_<ContainerAllocator> 
 {
   static const char* value()
   {
-    return "d21d882dd5226dc14dee3505d8112563";
+    return "2c572ceab70624218e2910dbae6f1f96";
   }
 
   static const char* value(const ::geometry_constraints::geom_constrResponse_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd21d882dd5226dc1ULL;
-  static const uint64_t static_value2 = 0x4dee3505d8112563ULL;
+  static const uint64_t static_value1 = 0x2c572ceab7062421ULL;
+  static const uint64_t static_value2 = 0x8e2910dbae6f1f96ULL;
 };
 
 template<class ContainerAllocator>
@@ -153,10 +167,10 @@ struct Definition< ::geometry_constraints::geom_constrResponse_<ContainerAllocat
 {
   static const char* value()
   {
-    return "float64 x_out\n\
-float64 y_out\n\
-float64 z_out\n\
-bool ok\n\
+    return "float64[6] x_out\n\
+float64[6] y_out\n\
+float64[6] z_out\n\
+bool[6] ok\n\
 \n\
 ";
   }
@@ -198,14 +212,30 @@ struct Printer< ::geometry_constraints::geom_constrResponse_<ContainerAllocator>
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::geometry_constraints::geom_constrResponse_<ContainerAllocator>& v)
   {
-    s << indent << "x_out: ";
-    Printer<double>::stream(s, indent + "  ", v.x_out);
-    s << indent << "y_out: ";
-    Printer<double>::stream(s, indent + "  ", v.y_out);
-    s << indent << "z_out: ";
-    Printer<double>::stream(s, indent + "  ", v.z_out);
-    s << indent << "ok: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.ok);
+    s << indent << "x_out[]" << std::endl;
+    for (size_t i = 0; i < v.x_out.size(); ++i)
+    {
+      s << indent << "  x_out[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.x_out[i]);
+    }
+    s << indent << "y_out[]" << std::endl;
+    for (size_t i = 0; i < v.y_out.size(); ++i)
+    {
+      s << indent << "  y_out[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.y_out[i]);
+    }
+    s << indent << "z_out[]" << std::endl;
+    for (size_t i = 0; i < v.z_out.size(); ++i)
+    {
+      s << indent << "  z_out[" << i << "]: ";
+      Printer<double>::stream(s, indent + "  ", v.z_out[i]);
+    }
+    s << indent << "ok[]" << std::endl;
+    for (size_t i = 0; i < v.ok.size(); ++i)
+    {
+      s << indent << "  ok[" << i << "]: ";
+      Printer<uint8_t>::stream(s, indent + "  ", v.ok[i]);
+    }
   }
 };
 
