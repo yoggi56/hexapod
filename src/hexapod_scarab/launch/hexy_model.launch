@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+        <!-- parameters for simulation -->
+        <arg name="model" default="$(find hexapod_scarab)/urdf/hexy_description.xacro"/>
+        <arg name="gui" default="true" />
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+        <param name="use_gui" value="$(arg gui)"/>
+        
+        <!-- load hexapod mechanical parameters -->
+        <rosparam file="$(find hexy_lib)/config/hexy_mechanical_params.yaml" command="load"/>
+
+        <!-- load simulation packages -->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hexapod_scarab)/rviz/hexy.rviz" />
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/> 
+</launch>

@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<robot>
+
+	<!-- Body Link -->
+
+	<gazebo reference="body">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Coxa R1 -->
+	<gazebo reference="coxa_R1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur R1 -->
+	<gazebo reference="femur_R1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia R1 -->
+	<gazebo reference="tibia_R1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Coxa R2 -->
+	<gazebo reference="coxa_R2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur R2 -->
+	<gazebo reference="femur_R2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia R2 -->
+	<gazebo reference="tibia_R2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Coxa R3 -->
+	<gazebo reference="coxa_R3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur R3 -->
+	<gazebo reference="femur_R3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia R3 -->
+	<gazebo reference="tibia_R3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- - - - - - - - - - - - - - - -->
+
+	<!-- Coxa L1 -->
+	<gazebo reference="coxa_L1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+          <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur L1 -->
+	<gazebo reference="femur_L1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia L1 -->
+	<gazebo reference="tibia_L1">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Coxa L2 -->
+	<gazebo reference="coxa_L2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur L2 -->
+	<gazebo reference="femur_L2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia L2 -->
+	<gazebo reference="tibia_L2">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Coxa L3 -->
+	<gazebo reference="coxa_L3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Femur L3 -->
+	<gazebo reference="femur_L3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- Tibia R3 -->
+	<gazebo reference="tibia_L3">
+                <mu1>100</mu1>
+                <mu2>100</mu2>
+                <kp>10000.0</kp>
+                <kd>10.0</kd>
+		<self_collide>true</self_collide>
+		<max_vel>0.1</max_vel>
+        <min_depth>0.001</min_depth>
+	</gazebo>
+
+	<!-- ros_control plugin -->
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/hexapod_scarab</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+
+</robot>

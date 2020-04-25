@@ -57,6 +57,8 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>urdf</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>controller_manager</build_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
@@ -65,6 +67,8 @@
   <run_depend>urdf</run_depend>
   <run_depend>rviz</run_depend>
   <run_depend>xacro</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>controller_manager</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

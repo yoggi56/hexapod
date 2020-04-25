@@ -59,6 +59,18 @@ int main(int argc, char **argv)
   ros::Publisher R3_pub_tibia = nh.advertise<std_msgs::Float64>("R3_tibia/command", 1);
 
   ros::Subscriber sub = nh.subscribe("joints_ref_angles", 1000, chatterJoints);
+
+  // angular speed inititalization
+  double max_speed = 3.0;
+  nh.setParam("/R1_coxa/joint_speed", max_speed);
+  nh.setParam("/R2_coxa/joint_speed", max_speed);
+  nh.setParam("/R3_coxa/joint_speed", max_speed);
+  nh.setParam("/R1_coxa/joint_speed", max_speed);
+  nh.setParam("/R2_coxa/joint_speed", max_speed);
+  nh.setParam("/R2_femur/joint_speed", max_speed);
+  nh.setParam("/R2_tibia/joint_speed", max_speed);
+  nh.setParam("/R3_coxa/joint_speed", max_speed);
+
   ros::Rate loop_rate(40);
   while (ros::ok())
   {

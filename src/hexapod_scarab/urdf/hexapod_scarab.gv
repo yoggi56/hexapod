@@ -1,0 +1,95 @@
+digraph G {
+node [shape=box];
+"body" [label="body"];
+"leg_center_1L" [label="leg_center_1L"];
+"coxa_L1" [label="coxa_L1"];
+"femur_L1" [label="femur_L1"];
+"tibia_L1" [label="tibia_L1"];
+"end_effector_L1" [label="end_effector_L1"];
+"leg_center_2L" [label="leg_center_2L"];
+"coxa_L2" [label="coxa_L2"];
+"femur_L2" [label="femur_L2"];
+"tibia_L2" [label="tibia_L2"];
+"end_effector_L2" [label="end_effector_L2"];
+"leg_center_3L" [label="leg_center_3L"];
+"coxa_L3" [label="coxa_L3"];
+"femur_L3" [label="femur_L3"];
+"tibia_L3" [label="tibia_L3"];
+"end_effector_L3" [label="end_effector_L3"];
+"leg_center_1R" [label="leg_center_1R"];
+"coxa_R1" [label="coxa_R1"];
+"femur_R1" [label="femur_R1"];
+"tibia_R1" [label="tibia_R1"];
+"end_effector_R1" [label="end_effector_R1"];
+"leg_center_2R" [label="leg_center_2R"];
+"coxa_R2" [label="coxa_R2"];
+"femur_R2" [label="femur_R2"];
+"tibia_R2" [label="tibia_R2"];
+"end_effector_R2" [label="end_effector_R2"];
+"leg_center_3R" [label="leg_center_3R"];
+"coxa_R3" [label="coxa_R3"];
+"femur_R3" [label="femur_R3"];
+"tibia_R3" [label="tibia_R3"];
+"end_effector_R3" [label="end_effector_R3"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"body" -> "leg_center_joint_L1" [label="xyz: 0.11 0.0675 0 \nrpy: 0 -0 0.785398"]
+"leg_center_joint_L1" -> "leg_center_1L"
+"leg_center_1L" -> "coxa_joint_L1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_L1" -> "coxa_L1"
+"coxa_L1" -> "femur_joint_L1" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_L1" -> "femur_L1"
+"femur_L1" -> "tibia_joint_L1" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_L1" -> "tibia_L1"
+"tibia_L1" -> "end effector_joint_L1" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_L1" -> "end_effector_L1"
+"body" -> "leg_center_joint_L2" [label="xyz: 0 0.0775 0 \nrpy: 0 -0 1.5708"]
+"leg_center_joint_L2" -> "leg_center_2L"
+"leg_center_2L" -> "coxa_joint_L2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_L2" -> "coxa_L2"
+"coxa_L2" -> "femur_joint_L2" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_L2" -> "femur_L2"
+"femur_L2" -> "tibia_joint_L2" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_L2" -> "tibia_L2"
+"tibia_L2" -> "end effector_joint_L2" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_L2" -> "end_effector_L2"
+"body" -> "leg_center_joint_L3" [label="xyz: -0.11 0.0675 0 \nrpy: 0 -0 2.35619"]
+"leg_center_joint_L3" -> "leg_center_3L"
+"leg_center_3L" -> "coxa_joint_L3" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_L3" -> "coxa_L3"
+"coxa_L3" -> "femur_joint_L3" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_L3" -> "femur_L3"
+"femur_L3" -> "tibia_joint_L3" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_L3" -> "tibia_L3"
+"tibia_L3" -> "end effector_joint_L3" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_L3" -> "end_effector_L3"
+"body" -> "leg_center_joint_R1" [label="xyz: 0.11 -0.0675 0 \nrpy: 0 0 -0.785398"]
+"leg_center_joint_R1" -> "leg_center_1R"
+"leg_center_1R" -> "coxa_joint_R1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_R1" -> "coxa_R1"
+"coxa_R1" -> "femur_joint_R1" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_R1" -> "femur_R1"
+"femur_R1" -> "tibia_joint_R1" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_R1" -> "tibia_R1"
+"tibia_R1" -> "end effector_joint_R1" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_R1" -> "end_effector_R1"
+"body" -> "leg_center_joint_R2" [label="xyz: 0 -0.0775 0 \nrpy: 0 0 -1.5708"]
+"leg_center_joint_R2" -> "leg_center_2R"
+"leg_center_2R" -> "coxa_joint_R2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_R2" -> "coxa_R2"
+"coxa_R2" -> "femur_joint_R2" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_R2" -> "femur_R2"
+"femur_R2" -> "tibia_joint_R2" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_R2" -> "tibia_R2"
+"tibia_R2" -> "end effector_joint_R2" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_R2" -> "end_effector_R2"
+"body" -> "leg_center_joint_R3" [label="xyz: -0.11 -0.0675 0 \nrpy: 0 0 -2.35619"]
+"leg_center_joint_R3" -> "leg_center_3R"
+"leg_center_3R" -> "coxa_joint_R3" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"coxa_joint_R3" -> "coxa_R3"
+"coxa_R3" -> "femur_joint_R3" [label="xyz: 0.034 0 0 \nrpy: 1.57 -0 0"]
+"femur_joint_R3" -> "femur_R3"
+"femur_R3" -> "tibia_joint_R3" [label="xyz: 0.095 0 0 \nrpy: 0 -0 0"]
+"tibia_joint_R3" -> "tibia_R3"
+"tibia_R3" -> "end effector_joint_R3" [label="xyz: 0.142 0 0 \nrpy: 0 -0 0"]
+"end effector_joint_R3" -> "end_effector_R3"
+}

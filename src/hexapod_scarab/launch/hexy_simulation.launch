@@ -15,7 +15,7 @@
         <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hexapod_scarab)/rviz/hexy.rviz" />
         <node name="hexy_joint_publisher" pkg="hexy_joint_publisher" type="joint_publisher"/> 
 
-        <!-- load other parameters -->
+        <!-- load other packages -->
         <node name="leg_inv_kinematic" pkg="leg_inv_kinematic" type="leg_inv_kinematic"/>
         <node name="ds4_driver" pkg="ds4_driver" type="ds4_driver_node.py"/>
         <node name="ds4_control" pkg="ds4_control" type="ds4_control"/>

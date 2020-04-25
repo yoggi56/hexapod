@@ -1,0 +1,102 @@
+hexapod_scarab:
+  # Publish all joint states
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers
+  # Leg R1
+  joint_coxa_R1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_R1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_R1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_R1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_R1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_R1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  # Leg R2
+  joint_coxa_R2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_R2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_R2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_R2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_R2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_R2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  # Leg R3
+  joint_coxa_R3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_R3
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_R3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_R3
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_R3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_R3
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  # Leg L1
+  joint_coxa_L1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_L1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_L1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_L1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_L1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_L1
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  # Leg L2
+  joint_coxa_L2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_L2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_L2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_L2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_L2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_L2
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  # Leg L3
+  joint_coxa_L3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: coxa_joint_L3
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_femur_L3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: femur_joint_L3
+    pid: {p: 400.0, i: 0.01, d: 50.0}
+
+  joint_tibia_L3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: tibia_joint_L3
+    pid: {p: 400.0, i: 0.01, d: 50.0}

@@ -1,47 +1,50 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hexapod_leg">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hexapod_scarab">
+
+	<xacro:include filename="$(find hexapod_scarab)/urdf/hexy.gazebo"/>
 
 <!-- Geometry and mass parameters -->
-  <xacro:property name="body_width_s" value="0.135"/>
-  <xacro:property name="body_width_b" value="0.155"/>
-  <xacro:property name="body_length" value="0.220"/>
-  <xacro:property name="body_heigth" value="0.04"/>
-  <xacro:property name="L1_length" value="0.034"/>
-  <xacro:property name="L2_length" value="0.095"/>
-  <xacro:property name="L3_length" value="0.134"/>
-  <xacro:property name="L_width" value="0.02"/>
+	<xacro:property name="body_width_s" value="0.135"/>
+	<xacro:property name="body_width_b" value="0.155"/>
+	<xacro:property name="body_length" value="0.220"/>
+	<xacro:property name="body_heigth" value="0.04"/>
+	<xacro:property name="L1_length" value="0.034"/>
+	<xacro:property name="L2_length" value="0.095"/>
+	<xacro:property name="L3_length" value="0.142"/>
+	<xacro:property name="L_width" value="0.02"/>
 
-  <xacro:property name="body_mass" value="0.3"/>
-  <xacro:property name="L1_mass" value="0.158"/>
-  <xacro:property name="L2_mass" value="0.034"/>
-  <xacro:property name="L3_mass" value="0.102"/>
+	<xacro:property name="body_mass" value="1.0"/>
+	<xacro:property name="L1_mass" value="0.5"/>
+	<xacro:property name="L2_mass" value="0.5"/>
+	<xacro:property name="L3_mass" value="0.5"/>
 
-  <xacro:property name="max_angle" value="150"/>
+	<xacro:property name="max_angle" value="150"/>
 
+	<xacro:property name="damp" value="0.9" />
 
-  <xacro:macro name="default_inertial" params="mass">
-    <inertial>
-      <mass value="${mass}" />
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
-        iyy="1.0" iyz="0.0"
-        izz="1.0" />
-      </inertial>
-    </xacro:macro>
+	<xacro:macro name="default_inertial" params="i_value mass">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="${mass}" />
+			<inertia ixx="${i_value}" ixy="0.0" ixz="0.0" iyy="${i_value}" iyz="0.0" izz="${i_value}" />
+		</inertial>
+	</xacro:macro>
 
-<!-- Build a body (thorax) -->
-    <link name="base_link" />
+	<!-- Build a body (thorax) -->
+<!--     <link name="base_link" />
 
     <joint name="base_joint" type="fixed">
       <parent link="base_link" />
       <child link="body" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </joint>
+    </joint> -->
 
     <link name="body">
       <visual>
         <geometry>
-          <box size="${body_length} ${body_width_s} ${body_heigth}"/>
+          <!-- <box size="${body_length} ${body_width_s} ${body_heigth}"/> -->
+          <mesh filename="package://hexapod_scarab/meshes/thorax.dae"/>
         </geometry>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <material name="white">
@@ -49,118 +52,165 @@
         </material>
       </visual>
       <collision>
+      	<origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <box size="${body_length} ${body_width_s} ${body_heigth}"/>
+          <mesh filename="package://hexapod_scarab/meshes/thorax_simpler.dae" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
-      <xacro:default_inertial mass="${body_mass}"/>
+      <xacro:default_inertial i_value="1.0" mass="${body_mass}"/>
     </link>
 
-<!-- Script for building a leg -->
+	<!-- Build a leg -->
     <xacro:macro name="leg" params="side num x y angle coxa_angle_sign">
 
-    <link name="leg_center_${num}${side}" />
+	 <!--    <link name="leg_center_${side}${num}" />
 
-    <joint name="leg_center_joint_${side}${num}" type="fixed">
-      <parent link="body"/>
-      <child link="leg_center_${num}${side}"/>
-      <origin rpy="0 0 ${angle}" xyz="${x} ${y} 0"/>
-    </joint>
+	    <joint name="leg_center_joint_${side}${num}" type="fixed">
+	      <parent link="body"/>
+	      <child link="leg_center_${side}${num}"/>
+	      <origin rpy="0 0 ${angle}" xyz="${x} ${y} 0"/>
+	    </joint> -->
 
-    <link name="coxa_${side}${num}">
-      <visual>
-        <geometry>
-          <box size="${L1_length} ${L_width} ${L_width}"/>
-        </geometry>
-        <origin rpy="0 0 0" xyz="${L1_length/2} 0 0"/>
-        <material name="yellow">
-          <color rgba="255 255 0 1"/>
-        </material>
-      </visual>
-      <collision>
-        <geometry>
-          <box size="${L1_length} ${L_width} ${L_width}"/>
-        </geometry>
-      </collision>
-      <xacro:default_inertial mass="${L1_mass}"/>
-    </link>
+	    <joint name="coxa_joint_${side}${num}" type="revolute">
+	      <parent link="body"/>
+	      <child link="coxa_${side}${num}"/>
+	      <axis xyz="0 0 ${coxa_angle_sign}"/>
+	      <origin rpy="0 0 ${angle}" xyz="${x} ${y} 0"/>
+	      <dynamics damping="${damp}" friction="0.8"/>
+	      <limit effort ="200.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="1.5"/>
+	    </joint>
 
-    <joint name="coxa_joint_${side}${num}" type="revolute">
-      <parent link="leg_center_${num}${side}"/>
-      <child link="coxa_${side}${num}"/>
-      <axis xyz="0 0 ${coxa_angle_sign}"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <limit effort ="1000.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="0.5"/>
-    </joint>
+	    <link name="coxa_${side}${num}">
+	      <visual>
+	        <geometry>
+	          <!-- <box size="${L1_length} ${L_width} ${L_width}"/> ${L1_length/2}-->
+	          <mesh filename="package://hexapod_scarab/meshes/coxa_left.dae"/>
+	        </geometry>
+	        <origin rpy="0 0 0" xyz="0 0 0"/>
+	        <material name="yellow">
+	          <color rgba="255 255 0 1"/>
+	        </material>
+	      </visual>
+	      <collision>
+	      	<origin rpy="0 0 0" xyz="0 0 0"/>
+	        <geometry>
+	          <mesh filename="package://hexapod_scarab/meshes/coxa_simpler.dae" scale="0.001 0.001 0.001"/>
+	        </geometry>
+	      </collision>
+	      <xacro:default_inertial i_value="1.0" mass="${L1_mass}"/>
+	    </link>
 
-    <link name="femur_${side}${num}">
-      <visual>
-        <geometry>
-          <box size="${L2_length} ${L_width} ${L_width}"/>
-        </geometry>
-        <origin rpy="0 0 0" xyz="${L2_length/2} 0 0"/>
-        <material name="green">
-          <color rgba="255 0 255 1"/>
-        </material>
-      </visual>
-      <collision>
-        <geometry>
-          <box size="${L2_length} ${L_width} ${L_width}"/>
-        </geometry>
-      </collision>
-      <xacro:default_inertial mass="${L2_mass}"/>
-    </link>
+	    <link name="femur_${side}${num}">
+	      <visual>
+	        <geometry>
+	          <!--<box size="${L2_length} ${L_width} ${L_width}"/>-->
+	          <mesh filename="package://hexapod_scarab/meshes/femur_left.dae" scale="0.001 0.001 0.001"/> 
+	        </geometry>
+	        <origin rpy="0 0 0" xyz="0 0 0"/>
+	        <material name="green">
+	          <color rgba="255 0 255 1"/>
+	        </material>
+	      </visual>
+	      <collision>
+	      	<origin rpy="0 0 0" xyz="0 0 0"/>
+	        <geometry>
+	          <mesh filename="package://hexapod_scarab/meshes/femur_simpler.dae" scale="0.001 0.001 0.001"/> 
+	        </geometry>
+	      </collision>
+	      <xacro:default_inertial i_value="1.0" mass="${L2_mass}"/>
+	    </link>
 
-    <joint name="femur_joint_${side}${num}" type="revolute">
-      <parent link="coxa_${side}${num}"/>
-      <child link="femur_${side}${num}"/>
-      <origin rpy="1.57 0 0" xyz="${L1_length} 0 0"/>
-      <axis xyz="0 0 1"/>
-      <limit effort ="1000.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="0.5"/>
-    </joint>
+	    <joint name="femur_joint_${side}${num}" type="revolute">
+	      <parent link="coxa_${side}${num}"/>
+	      <child link="femur_${side}${num}"/>
+	      <origin rpy="1.57 0 0" xyz="${L1_length} 0 0"/>
+	      <axis xyz="0 0 1"/>
+	      <dynamics damping="${damp}" />
+	      <limit effort ="200.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="1.5"/>
+	    </joint>
 
-    <link name="tibia_${side}${num}">
-      <visual>
-        <geometry>
-          <box size="${L3_length} ${L_width} ${L_width}"/>
-        </geometry>
-        <origin rpy="0 0 0" xyz="${L3_length/2} 0 0"/>
-        <material name="blue">
-          <color rgba="0 255 255 1"/>
-        </material>
-      </visual>
-      <collision>
-        <geometry>
-          <box size="${L3_length} ${L_width} ${L_width}"/>
-        </geometry>
-      </collision>
-      <xacro:default_inertial mass="${L3_mass}"/>
-    </link>
+	    <link name="tibia_${side}${num}">
+	      <visual>
+	        <geometry>
+	          <!--<box size="${L3_length} ${L_width} ${L_width}"/>-->
+	          <mesh filename="package://hexapod_scarab/meshes/tibia_simpler.dae" scale="0.001 0.001 0.001"/> 
+	        </geometry>
+	        <origin rpy="0 0 0" xyz="0 0 0"/>
+	        <material name="blue">
+	          <color rgba="0 255 255 1"/>
+	        </material>
+	      </visual>
+	      <collision>
+	      	<origin rpy="0 0 0" xyz="0 0 0"/>
+	        <geometry>
+	          <mesh filename="package://hexapod_scarab/meshes/tibia_simpler.dae" scale="0.001 0.001 0.001"/> 
+	        </geometry>
+	      </collision>
+	      <xacro:default_inertial i_value="1.0" mass="${L3_mass}"/>
+	    </link>
 
-    <joint name="tibia_joint_${side}${num}" type="revolute">
-      <parent link="femur_${side}${num}"/>
-      <child link="tibia_${side}${num}"/>
-      <origin rpy="0 0 0" xyz="${L2_length} 0 0"/>
-      <axis xyz="0 0 -1"/>
-      <limit effort ="1000.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="0.5"/>
-    </joint>
+	    <joint name="tibia_joint_${side}${num}" type="revolute">
+	      <parent link="femur_${side}${num}"/>
+	      <child link="tibia_${side}${num}"/>
+	      <origin rpy="0 0 0" xyz="${L2_length} 0 0"/>
+	      <axis xyz="0 0 -1"/>
+	      <dynamics damping="${damp}" />
+	      <limit effort ="200.0" lower="${radians(-max_angle)}" upper="${radians(max_angle)}" velocity="1.5"/>
+	    </joint>
 
-    <link name="end_effector_${side}${num}"/>
+	    <link name="end_effector_${side}${num}"/>
 
-     <joint name="end effector_joint_${side}${num}" type="fixed">
-      <parent link="tibia_${side}${num}"/>
-      <child link="end_effector_${side}${num}"/>
-      <origin rpy="0 0 0" xyz="${L3_length} 0 0"/>
-    </joint>
+	     <joint name="end effector_joint_${side}${num}" type="fixed">
+	      <parent link="tibia_${side}${num}"/>
+	      <child link="end_effector_${side}${num}"/>
+	      <origin rpy="0 0 0" xyz="${L3_length} 0 0"/>
+	    </joint>
+
+	    <!-- Define actuators -->
+		<transmission name="coxa_transmission_${side}${num}">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="coxa_joint_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="coxa_motor_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1.0</mechanicalReduction>
+				<motorTorqueConstant>1.0</motorTorqueConstant>
+			</actuator>
+		</transmission>
+
+		<transmission name="femur_transmission_${side}${num}">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="femur_joint_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="femur_motor_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1.0</mechanicalReduction>
+				<motorTorqueConstant>1.0</motorTorqueConstant>
+			</actuator>
+		</transmission>
+
+		<transmission name="tibia_transmission_${side}${num}">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="tibia_joint_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="tibia_motor_${side}${num}">
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1.0</mechanicalReduction>
+				<motorTorqueConstant>1.0</motorTorqueConstant>
+			</actuator>
+		</transmission>
 
     </xacro:macro>
 
-<!-- Building legs -->
-   <xacro:leg side="R" num="1" x="${body_length/2}" y="${-body_width_s/2}" angle="${radians(-45)}" coxa_angle_sign="1"/>-
-    <xacro:leg side="R" num="2" x="0"                y="${-body_width_b/2}" angle="${radians(-90)}" coxa_angle_sign="1"/>
-    <xacro:leg side="R" num="3" x="${-body_length/2}" y="${-body_width_s/2}" angle="${radians(-135)}" coxa_angle_sign="1"/>
-    <xacro:leg side="L" num="1" x="${body_length/2}" y="${body_width_s/2}" angle="${radians(45)}" coxa_angle_sign="-1"/>
-    <xacro:leg side="L" num="2" x="0"                y="${body_width_b/2}" angle="${radians(90)}" coxa_angle_sign="-1"/>
-    <xacro:leg side="L" num="3" x="${-body_length/2}" y="${body_width_s/2}" angle="${radians(135)}" coxa_angle_sign="-1"/>
+	<!-- Building ALL legs -->
+	<xacro:leg side="R" num="1" x="${body_length/2}" y="${-body_width_s/2}" angle="${radians(-45)}" coxa_angle_sign="1"/>-
+	<xacro:leg side="R" num="2" x="0"                y="${-body_width_b/2}" angle="${radians(-90)}" coxa_angle_sign="1"/>
+	<xacro:leg side="R" num="3" x="${-body_length/2}" y="${-body_width_s/2}" angle="${radians(-135)}" coxa_angle_sign="1"/>
+	<xacro:leg side="L" num="1" x="${body_length/2}" y="${body_width_s/2}" angle="${radians(45)}" coxa_angle_sign="-1"/>
+	<xacro:leg side="L" num="2" x="0"                y="${body_width_b/2}" angle="${radians(90)}" coxa_angle_sign="-1"/>
+	<xacro:leg side="L" num="3" x="${-body_length/2}" y="${body_width_s/2}" angle="${radians(135)}" coxa_angle_sign="-1"/>
 
   </robot>
