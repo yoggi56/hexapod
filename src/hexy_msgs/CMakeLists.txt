@@ -20,6 +20,7 @@ add_message_files(
    LegRefPos.msg
    LegCurJoints.msg
    LegCurPos.msg
+   HexyRefVel.msg
  )
 
 ## Generate added messages and services with any dependencies listed here

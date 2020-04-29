@@ -52,16 +52,22 @@
 
 	<!-- convert joint states to TF transforms for rviz, etc -->
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
-		<remap from="/joint_states" to="/hexapod_scarab/joint_states" />
+	<remap from="/joint_states" to="/hexapod_scarab/joint_states" />
 	</node>
 
 	<!-- load hexapod mechanical parameters -->
     <rosparam file="$(find hexy_lib)/config/hexy_mechanical_params.yaml" command="load"/>
     
 	<!-- load other packages -->
-	<node name="hexy_gazebo_publisher" pkg="hexy_gazebo_publisher" type="hexy_gazebo_publisher"/>
+	<node name="hexy_gazebo_publisher" pkg="hexy_gazebo" type="hexy_gazebo_publisher"/>
+	<node name="hexy_gazebo_subscriber" pkg="hexy_gazebo" type="hexy_gazebo_subscriber"/>
     <node name="leg_inv_kinematic" pkg="leg_inv_kinematic" type="leg_inv_kinematic"/>
+    <node name="leg_forw_kinematic" pkg="leg_forw_kinematic" type="leg_forw_kinematic"/>
     <node name="ds4_driver" pkg="ds4_driver" type="ds4_driver_node.py"/>
-    <node name="ds4_control" pkg="ds4_control" type="ds4_control" output="screen"/>
     <node name="geometry_constraints" pkg="geometry_constraints" type="geometry_constraints"/>
+    <node name="hexy_command" pkg="hexy_command" type="hexy_command"/>
+    <node name="hexy_moving" pkg="hexy_moving" type="hexy_moving" output="screen"/>
+    <!--
+    <node name="ds4_control" pkg="ds4_control" type="ds4_control" output="screen"/>
+-->
 </launch>

@@ -12,6 +12,15 @@
 //#define BODY_LENGTH 0.220
 //#define BODY_HEIGTH 0.04
 
+#define GO_IDLE       1
+#define GO_SLEEP      2
+#define MOVING        3
+#define SLEEPING      4
+
+#define X 0
+#define Y 1
+#define Z 2
+
 // math constants
 #define PI 3.14159265
 
@@ -72,7 +81,7 @@
 // xyz constraints for all the legs
 #define L1_X_MAX 0.278
 #define L1_X_MIN 0.11
-#define L1_Y_MAX 0.27
+#define L1_Y_MAX 0.265
 #define L1_Y_MIN 0.125
 #define L1_Z_MAX -0.05
 #define L1_Z_MIN -0.145
@@ -86,7 +95,7 @@
 
 #define L3_X_MAX -0.11
 #define L3_X_MIN -0.278
-#define L3_Y_MAX 0.27
+#define L3_Y_MAX 0.265
 #define L3_Y_MIN 0.125
 #define L3_Z_MAX -0.05
 #define L3_Z_MIN -0.145
@@ -94,7 +103,7 @@
 #define R1_X_MAX 0.278
 #define R1_X_MIN 0.11
 #define R1_Y_MAX -0.125
-#define R1_Y_MIN -0.27
+#define R1_Y_MIN -0.25
 #define R1_Z_MAX -0.05
 #define R1_Z_MIN -0.145
 
@@ -108,7 +117,7 @@
 #define R3_X_MAX -0.11
 #define R3_X_MIN -0.278
 #define R3_Y_MAX -0.125
-#define R3_Y_MIN -0.27
+#define R3_Y_MIN -0.25
 #define R3_Z_MAX -0.05
 #define R3_Z_MIN -0.145
 

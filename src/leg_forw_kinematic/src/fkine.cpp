@@ -9,9 +9,9 @@ vector < vector <double> > fkine::run(double const joints[6][3])
 {
   vector< std::vector<double> > result_position(6, vector<double>(3));
 
-  run_L1(joints[LEG_L1][COXA], joints[LEG_L1][FEMUR], joints[LEG_L1][TIBIA]);
-  run_L2(joints[LEG_L2][COXA], joints[LEG_L2][FEMUR], joints[LEG_L2][TIBIA]);
-  run_L3(joints[LEG_L3][COXA], joints[LEG_L3][FEMUR], joints[LEG_L3][TIBIA]);
+  run_L1(-joints[LEG_L1][COXA], joints[LEG_L1][FEMUR], joints[LEG_L1][TIBIA]);
+  run_L2(-joints[LEG_L2][COXA], joints[LEG_L2][FEMUR], joints[LEG_L2][TIBIA]);
+  run_L3(-joints[LEG_L3][COXA], joints[LEG_L3][FEMUR], joints[LEG_L3][TIBIA]);
   run_R1(joints[LEG_R1][COXA], joints[LEG_R1][FEMUR], joints[LEG_R1][TIBIA]);
   run_R2(joints[LEG_R2][COXA], joints[LEG_R2][FEMUR], joints[LEG_R2][TIBIA]);
   run_R3(joints[LEG_R3][COXA], joints[LEG_R3][FEMUR], joints[LEG_R3][TIBIA]);
@@ -80,13 +80,8 @@ void fkine::run_R1(double coxa, double femur, double tibia)
 void fkine::run_R2(double coxa, double femur, double tibia)
 {
   position[LEG_R2][EP_X] = sin(coxa)*(L3_length*cos(femur - tibia) + cos(femur)*L2_length + L1_length);
-  //sin(u(1))*(L3*       sin(u(2)-u(3))     + cos(u(2)) *L2+         L1);
   position[LEG_R2][EP_Y] = cos(coxa)*(-L3_length*cos(femur - tibia) - cos(femur)*L2_length - L1_length) - body_width_big/2;
   position[LEG_R2][EP_Z] = L3_length*sin(femur - tibia) + sin(femur)*L2_length;
-
-  //sin(u(1))*(L3*sin(u(2)-u(3))+cos(u(2))*L2+L1);
-  //cos(u(1))*(-L3*sin(u(2)-u(3))-cos(u(2))*L2-L1)-bWb/2;
-  //-L3*cos(u(2)-u(3))+sin(u(2))*L2;
 }
 
 void fkine::run_R3(double coxa, double femur, double tibia)

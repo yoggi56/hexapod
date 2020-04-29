@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>hexy_gazebo_publisher</name>
+  <name>hexy_moving</name>
   <version>0.1.0</version>
-  <description>The hexy_gazebo_publisher package</description>
+  <description>The hexy_moving package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/hexy_gazebo_publisher</url> -->
+  <!-- <url type="website">http://wiki.ros.org/hexy_moving</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -50,16 +50,12 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>hexy_msgs</build_depend>
-  <build_depend>hexy_lib</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <exec_depend>roscpp</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>hexy_msgs</exec_depend>
-  <exec_depend>hexy_lib</exec_depend>
-
-
+  <depend>std_msgs</depend>
+  <depend>hexy_lib</depend>
+  <depend>hexy_msgs</depend>
+  <depend>geometry_constraints</depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->

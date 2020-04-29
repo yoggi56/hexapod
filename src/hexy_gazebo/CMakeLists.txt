@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(hexy_gazebo_publisher)
+project(hexy_gazebo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   hexy_msgs
   hexy_lib
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -153,6 +154,9 @@ include_directories(
 
 add_executable(hexy_gazebo_publisher src/hexy_gazebo_publisher.cpp)
 target_link_libraries(hexy_gazebo_publisher ${catkin_LIBRARIES})
+
+add_executable(hexy_gazebo_subscriber src/hexy_gazebo_subscriber.cpp)
+target_link_libraries(hexy_gazebo_subscriber ${catkin_LIBRARIES})
 
 #############
 ## Install ##

@@ -49,11 +49,12 @@
 //#define LEG_R2 4
 //#define LEG_R3 5
 
-#define GO_IDLE       1
-#define LEG_CONTROL   2
-#define BODY_CONTROL  3
-#define WALK          4
-#define GO_SLEEP      5
+//#define GO_IDLE       1
+//#define GO_SLEEP      2
+#define LEG_CONTROL   3
+#define BODY_CONTROL  4
+#define WALK          5
+
 
 #define WAITING           0
 #define STAND_UP          1
@@ -397,7 +398,7 @@ int main(int argc, char **argv)
       break;
 
     //-----------------------------------------
-    //--hand control of all the legs-----------
+    //--body control of all the legs-----------
     case BODY_CONTROL:
       for (int i = 0; i < 6; i++)
       {
